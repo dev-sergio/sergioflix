@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const VideoCardContainer = styled.a`
-  border: 2px solid;
-  border-radius: 4px;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
@@ -13,19 +11,59 @@ export const VideoCardContainer = styled.a`
   background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
   background-position: center;
-  border-radius: 10px;
   position: relative;
   display: flex;
-  align-items: flex-end;
-  padding: 16px;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 16px;
 
-  transition: opacity .3s;
   &:hover,
   &:focus {
-    opacity: .5;
+    transform: scale(1.1);
   }
-  
+
   &:not(:first-child) {
     margin-left: 20px;
+  }
+
+`;
+
+VideoCardContainer.Background = styled.div`
+  background-image: ${({ url }) => `url(${url})`};
+  flex: 0 0 298px;
+  width: 298px;
+  height: 197px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, 0.7);
+    border-bottom: 4px solid var(--white);
+  }
+
+  &:hover span {
+    opacity: 1;
+  }
+
+  @media (max-width: 800px) {
+    background: rgba(0, 0, 0, 0.7);
+
+    span {
+      opacity: 1;
+    }
+  }
+`;
+
+VideoCardContainer.Title = styled.span`
+  font-size: 16pt;
+  text-align: center;
+  opacity: 0;
+  font-weight: 700;
+
+  &:hover {
+    opacity: 1;
   }
 `;

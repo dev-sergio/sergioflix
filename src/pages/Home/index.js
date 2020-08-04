@@ -1,48 +1,39 @@
 import React from 'react';
-import Menu from '../../components/Menu'
+import Menu from '../../components/Menu';
 import dadosIniciais from '../../data/dados_iniciais.json';
 import BannerMain from '../../components/BannerMain';
 import Carousel from '../../components/Carousel';
 import Footer from '../../components/Footer';
+import { HomeBase } from './styles';
 
 function Home() {
+  const carousels = [];
+
+  for (const [index] of dadosIniciais.categorias.entries()) {
+    carousels.push(<Carousel
+      key={index}
+      ignoreFirstVideo
+      category={dadosIniciais.categorias[index]}
+    />);
+  }
+
   return (
-    <div style={{ background: "#141414" }}>
-      <Menu />
+    <HomeBase>
 
-      <BannerMain
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-        url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription={"O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"}
-      />
+      <div className="Home">
 
-      <Carousel
-        ignoreFirstVideo
-        category={dadosIniciais.categorias[0]}
-      />
+        <Menu />
 
-      <Carousel
-        category={dadosIniciais.categorias[1]}
-      />
+        <BannerMain
+          videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
+          url={dadosIniciais.categorias[0].videos[0].url}
+          videoDescription="Um dos fimes mais belos que já assisti, Durante a Segunda Guerra Mundial na Itália, o judeu Guido e seu filho Giosué são levados para um campo de concentração nazista. Afastado da mulher, ele tem que usar sua imaginação para fazer o menino acreditar que estão participando de uma grande brincadeira, com o intuito de protegê-lo do terror e da violência que os cercam."
+        />
 
-      <Carousel
-        category={dadosIniciais.categorias[2]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[3]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[4]}
-      />      
-
-      <Carousel
-        category={dadosIniciais.categorias[5]}
-      />      
-
-      <Footer />
-    </div>
+        { carousels }
+        <Footer />
+      </div>
+    </HomeBase>
   );
 }
 

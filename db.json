@@ -1,0 +1,14 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Guerra",
+      "descricao": "Filmes de guerra"
+    },
+    {
+      "id": 2,
+      "nome": "Comédia",
+      "descricao": "Filmes de Comédia"
+    }
+  ]
+} 

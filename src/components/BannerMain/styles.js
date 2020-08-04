@@ -37,7 +37,6 @@ ContentAreaContainer.Category = styled.h1`
   padding: 25px;
   line-height: 1;
   border-radius: 4px;
-
   @media (max-width: 800px) {
     display: none;
     font-size: 18px;
@@ -46,6 +45,13 @@ ContentAreaContainer.Category = styled.h1`
 `;
 
 ContentAreaContainer.Description = styled.p`
+  font-size: 18px;
+  line-height: 1.2em;
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
+
   @media (max-width: 800px) {
     display: none;
   }
@@ -54,19 +60,22 @@ ContentAreaContainer.Description = styled.p`
 ContentAreaContainer.Title = styled.h2`
   font-style: normal;
   font-weight: 300;
-  font-size: 40px;
+  font-size: 28pt;
   line-height: 1;
   margin-top: 0;
   margin-bottom: 32px;
+  @media (max-width: 2014px){
+    font-size: 22pt;
+  }
 
   @media (max-width: 800px) {
-    font-size: 32px;
+    font-size: 20pt;
     text-align: center;
   }
 `;
 
 export const BannerMainContainer = styled.section`
-  height: 80vh;
+  height: 70vh;
   position: relative;
   color: #fff;
   background-image: ${({ backgroundImage }) => `url(${backgroundImage})`}; 
@@ -76,7 +85,6 @@ export const BannerMainContainer = styled.section`
     height: auto;
     min-height: 50vh;
   }
-
   &:after,
   &:before {
     content: "";
@@ -87,13 +95,11 @@ export const BannerMainContainer = styled.section`
     margin: auto;
     height: 20%;
   }
-
   &:before {
     top: 0;
     height: 100%;
     background: rgba(0,0,0,0.5);
   }
-
   &:after {
     bottom: 0;
     background: linear-gradient(0deg, #141414 0%, transparent 100%);
@@ -104,7 +110,7 @@ export const WatchButton = styled.button`
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   cursor: pointer;
-  padding: 16px 24px;
+  padding: 10px 20px;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
@@ -112,10 +118,10 @@ export const WatchButton = styled.button`
   border-radius: 5px;
   text-decoration: none;
   display: inline-block;
-  border: 1px solid transparent;
-  color: var(--black);
-  background: var(--white);
-  border-color: var(--black);
+  border: 3px solid transparent;
+  color: var(--white);
+  background: transparent;
+  border-color: var(--white);
   transition: opacity .3s;
   display: none;
   margin: 0 auto;

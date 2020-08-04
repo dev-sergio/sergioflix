@@ -9,6 +9,16 @@
       "id": 2,
       "nome": "Comédia",
       "descricao": "Filmes de Comédia"
+    },
+    {
+      "id": 3,
+      "nome": "Romance",
+      "descricao": "Filmes de Romance"
+    },
+    {
+      "id": 4,
+      "nome": "Animação",
+      "descricao": "Filmes de Animação"
     }
   ]
 } 

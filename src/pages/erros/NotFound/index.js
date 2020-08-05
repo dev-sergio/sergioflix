@@ -1,7 +1,9 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 // import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Menu from '../../../components/Menu';
+import Button from '../../../components/Button';
 
 const eye = keyframes`
 0%,
@@ -43,7 +45,8 @@ const shvr = keyframes`
 `;
 
 const Body = styled.body`
-  margin-top: 100px;
+  margin-top: 80px;
+  margin-bottom: 80px;
   text-align: center;
   color: #fff;
 &::before {
@@ -54,11 +57,11 @@ const Body = styled.body`
   margin-bottom: 10px;
 }
 &::after {
-  content: "Página não encontrada amigx";
+  content: "Puts parça, não achei essa página não hein! =S";
 }
 `;
 
-const Meta = styled.meta`
+const Eye = styled.meta`
   position: relative;
   display: inline-block;
   background: #fff;
@@ -119,10 +122,14 @@ const Head = styled.head`
   }
 `;
 
-const Html = styled.html`
+const Html = styled.header`
   background: #000;
   height: 93.4vh;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+`;
+
+const Center = styled.div`
+    text-align: center;
 `;
 
 function NotFound() {
@@ -131,10 +138,15 @@ function NotFound() {
       <Menu />
       <Html>
         <Head>
-          <Meta />
-          <Meta />
+          <Eye />
+          <Eye />
           <Body />
         </Head>
+        <Center>
+          <Button as={Link} to="/">
+            Home
+          </Button>
+        </Center>
       </Html>
     </>
   );

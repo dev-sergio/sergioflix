@@ -1,91 +1,132 @@
 import React from 'react';
-import styled from 'styled-components';
-import { PropTypes } from 'prop-types';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
-const InputContainer = styled.div`
+const WapperFormfield = styled.div`
+    position: relative;
+  textarea {
+    min-height: 150px;
+  }
+  input[type="color"] {
+    padding-left: 56px;
+  }
+`;
+const Label = styled.label``;
+
+Label.Text = styled.span`
+  color: #E5E5E5;
+  height: 57px;
+  position: absolute; 
+  top: 0;
+  left: 16px;
+  
   display: flex;
-  flex-direction: column;
-  margin: 15px 0;
-  position: relative;
-  transition: all 0.2s ease;
+  align-items: center;
+  
+  transform-origin: 0% 0%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  
+  transition: .1s ease-in-out;
+`;
 
-  & > input,
-  & > textarea {
-    border: 1px solid var(--grayMedium);
-    border-radius: 0.25rem;
-    background-color: transparent;
-    outline: none;
-    padding: 12px 3px 12px 15px;
-    font-size: 16px;
-    transition: all 0.2s ease;
-    z-index: 1;
-    resize: vertical;
+const Input = styled.input`
+  background: #53585D;
+  color: #F5F5F5;
+  display: block;
+  width: 100%;
+  height: 57px;
+  font-size: 18px;
+  
+  outline: 0;
+  border: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid var(--gold);
+  
+  padding: 16px 16px;
+  margin-bottom: 45px;
+  
+  resize: none;
+  border-radius: 4px;
+  transition: border-color .3s;
+  
+  &:focus {
+    border-bottom-color: var(--black);
   }
-
-  & > label {
-    color: grey;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    transition: all 0.2s ease;
-    z-index: 1;
-
-    ${(props) => props.focused
-    && `
-      font-size: 13px;
-      transform: translateY(-23px) translateX(-5px);
-      z-index: 2;
-      background: white;
-      padding: 0 8px;
-    `}
+  &:focus:not([type='color']) + ${Label.Text} {
+    transform: scale(.6) translateY(-10px);
   }
-
-  `;
+  ${({ hasValue }) => hasValue && css`
+    &:not([type="color"]) + span {
+      transform: scale(.6) translateY(-10px);
+    }
+  `}
+`;
 
 function FormField({
-  label, value, type, name, onChange,
+  label, req, type, name, value, onChange, suggestions,
 }) {
-  const [focused] = React.useState(false);
-  const isFocused = focused || String(value).length || type === 'date';
   const fieldId = `id_${name}`;
+  const isTextarea = type === 'textarea';
+  const Tag = isTextarea ? 'textarea' : 'input';
+
+  const hasValue = Boolean(value.length);
+  const hasSuggestions = Boolean(suggestions.length);
 
   return (
-    <InputContainer className="input-container" focused={isFocused}>
-      {type === 'textarea' ? (
-        <textarea
+    <WapperFormfield>
+      <Label htmlFor={fieldId}>
+        <Input
+          required="required"
+          as={Tag}
+          id={fieldId}
+          type={type}
           value={value}
           name={name}
+          hasValue={hasValue}
           onChange={onChange}
-          rows="2"
+          autoComplete="off"
+          list={hasSuggestions ? `suggestionFor_${fieldId}` : 'off'}
         />
-      )
-        : (
-          <input
-            type={type}
-            value={value}
-            name={name}
-            onChange={onChange}
-          />
-        )}
-      <label htmlFor={fieldId} className="label">
-        {label}
-      </label>
-    </InputContainer>
+        <Label.Text>
+          {label}
+          :
+          {req}
+        </Label.Text>
+        {
+          hasSuggestions && (
+            <datalist id={`suggestionFor_${fieldId}`}>
+              {
+              suggestions.map((suggestion) => (
+                <option value={suggestion} key={`suggestionFor_${fieldId}_option${suggestion}`}>
+                  {suggestion}
+                </option>
+              ))
+            }
+            </datalist>
+          )
+        }
+      </Label>
+    </WapperFormfield>
   );
 }
 
 FormField.defaultProps = {
   type: 'text',
   value: '',
-  onChange: () => { },
+  suggestions: [],
+  req: '',
 };
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  req: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
-  onChange: PropTypes.func,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  suggestions: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default FormField;

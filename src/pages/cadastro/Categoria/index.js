@@ -163,6 +163,7 @@ function Categoria() {
 
             <FormField
               label="Categoria do filme/seriado"
+              req="*"
               type="text"
               value={dadosCategoria.nome}
               name="nome"
@@ -172,10 +173,12 @@ function Categoria() {
 
             <FormField
               label="Descreva o filme/seriado"
+              req="*"
               type="textarea"
               value={dadosCategoria.descricao}
               name="descricao"
               onChange={alterarCategoria}
+              required
             />
 
             <SpanInfo> * Campo obrigatório =)</SpanInfo>

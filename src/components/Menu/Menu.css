@@ -34,7 +34,7 @@ body {
 @media (max-width: 800px) {
   .Menu {
     height: 40px;
-    justify-content: center;
+    justify-content: space-around;
   }
   body {
     --bodyPaddingTop: 40px;
@@ -62,7 +62,7 @@ body {
   opacity: .5;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   a.ButtonLink {
     position: fixed;
     left: 0;
@@ -73,4 +73,4 @@ body {
     border: 0;
     text-align: center;
   }
-}
+} */

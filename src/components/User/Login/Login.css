@@ -31,13 +31,12 @@
 
 .user-login__form-control input:focus {
   outline: 0;
-  border-color: #5988df;
+  border-color: #78df59;
 }
 
 .user-login__submit-button {
   width: 100%;
   margin-top: 30px;
-  color: red !important;
 }
 
 .user-login__error {

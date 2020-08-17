@@ -1,9 +1,26 @@
 import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import StoreContext from '../../Store/Context';
 
 import './Login.css';
 import UIButton from '../../UI/Button/Button';
+import FormField from '../../FormField';
+
+const FormContainer = styled.div`
+  width: 50%;
+  margin-left: auto;
+  margin-right:auto;
+  @media(max-width: 800px){
+    width: 100%;
+  }
+`;
+
+const SpanInfo = styled.span`
+  display: block;
+  font-size: 10pt;
+  color: var(--blackLighter);
+`;
 
 function initialState() {
   return { user: '', password: '' };
@@ -31,58 +48,63 @@ const UserLogin = () => {
     });
   }
 
+  // eslint-disable-next-line consistent-return
   function onSubmit(event) {
     event.preventDefault();
 
-    const { token, error } = login(values);
+    const { token, erro } = login(values);
 
     if (token) {
       setToken(token);
       return history.push('/Cadastro/Video');
     }
 
-    setError(error);
+    setError(erro);
     setValues(initialState);
   }
 
   return (
-    <div className="user-login">
-      <h1 className="user-login__title">Acessar o Sistema</h1>
-      <form onSubmit={onSubmit}>
-        <div className="user-login__form-control">
-          <label htmlFor="user">Usuário</label>
-          <input
-            id="user"
+    <>
+      <FormContainer>
+        <h1> Acessar o Sistema</h1>
+
+        <form onSubmit={onSubmit}>
+
+          <FormField
+            label="Usuário"
+            req="*"
             type="text"
+            value={values.user}
             name="user"
             onChange={onChange}
-            value={values.user}
+            required
           />
-        </div>
-        <div className="user-login__form-control">
-          <label htmlFor="password">Senha</label>
-          <input
-            id="password"
+
+          <FormField
+            label="Senha"
+            req="*"
             type="password"
+            value={values.password}
             name="password"
             onChange={onChange}
-            value={values.password}
+            required
           />
-        </div>
-        {error && (
-          <div className="user-login__error">{error}</div>
-        )}
+          <SpanInfo> * Campo obrigatório =)</SpanInfo>
+          {error && (
+            <div className="user-login__error">{error}</div>
+          )}
 
-        <UIButton
-          type="submit"
-          theme="contained-green"
-          className="user-login__submit-button"
-          rounded
-        >
-          Entrar
-        </UIButton>
-      </form>
-    </div>
+          <UIButton
+            type="submit"
+            theme="contained-green"
+            className="user-login__submit-button"
+            rounded
+          >
+            Entrar
+          </UIButton>
+        </form>
+      </FormContainer>
+    </>
   );
 };
 

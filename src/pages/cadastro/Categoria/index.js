@@ -18,6 +18,10 @@ const FormContainer = styled.div`
 
 const Loading = styled.div`
   text-align: center;
+  width: 100%;
+  @media(max-width: 800px){
+    width: 30%;
+  }
 `;
 
 const Button = styled.button`
@@ -172,7 +176,7 @@ function Categoria() {
             />
 
             <FormField
-              label="Descreva o filme/seriado"
+              label="Descreva a categoria do filme/seriado"
               req="*"
               type="textarea"
               value={dadosCategoria.descricao}

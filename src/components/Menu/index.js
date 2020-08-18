@@ -8,19 +8,21 @@ import StoreContext from '../Store/Context';
 // import Button from '../Button';
 
 function Menu() {
-  const { setToken } = useContext(StoreContext);
+  const { setToken, token } = useContext(StoreContext);
   return (
     <nav className="Menu">
       <Link to="/">
         <img className="Logo" src={Logo} alt="Logo do SergioFlix" />
       </Link>
-
       <Button as={Link} className="ButtonLink" to="/cadastro/video">
-        Novo Vídeo
+        {token != null ? 'Cadastro' : 'Login'}
       </Button>
+      {token != null
+      && (
       <Button as={Link} className="ButtonLink" to="/" type="button" onClick={() => setToken(null)}>
         Logout
       </Button>
+      )}
     </nav>
   );
 }

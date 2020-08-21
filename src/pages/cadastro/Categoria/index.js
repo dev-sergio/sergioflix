@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { ToastContainer, toast } from 'react-toastify';
+import useForm from '../../../hooks/useForm';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField/index';
-import 'react-toastify/dist/ReactToastify.css';
 import loading from '../../../assets/gif/loading.gif';
+import categoriasRepository from '../../../repositories/categorias';
 
 const FormContainer = styled.div`
   width: 50%;
@@ -52,112 +52,46 @@ const RightContainer = styled.div`
   margin-bottom: 20px;
 `;
 
-function Categoria() {
+function CadastroCategoria() {
   const valoresIniciais = {
     nome: '',
     descricao: '',
     cor: '',
   };
 
+  const { handlerChange, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [dadosCategoria, setCategoria] = useState(valoresIniciais);
-
-  function setDadosCategoria(chave, valor) {
-    setCategoria({
-      ...dadosCategoria,
-      [chave]: valor,
-    });
-  }
-
-  function alterarCategoria(dadoNovo) {
-    setDadosCategoria(
-      dadoNovo.target.getAttribute('name'),
-      dadoNovo.target.value,
-    );
-  }
-
-  const URL = window.location.hostname.includes('localhost')
-    ? 'http://localhost:8080/categorias'
-    : 'https://sergio-flix.herokuapp.com/categorias';
 
   useEffect(() => {
-    fetch(URL).then(async (response) => {
-      const retorno = await response.json();
-      setCategorias([
-        ...retorno,
-      ]);
+    categoriasRepository.getAll().then((categoriasFromServer) => {
+      setCategorias(categoriasFromServer);
     });
-  }, [URL]);
-
-  function addCategoria(categoria) {
-    const novaCategoria = {
-      id: dadosCategoria.length + 1,
-      nome: categoria.nome,
-      descricao: categoria.descricao,
-    };
-
-    fetch(URL,
-      {
-        method: 'post',
-        headers: {
-          // eslint-disable-next-line quote-props
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(novaCategoria),
-      }).then(async (response) => {
-      if (response.status === 201) {
-        setCategorias([
-          ...categorias,
-          categoria,
-        ]);
-
-        toast.success('Categoria cadastrada com sucesso! 🎞', {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      } else {
-        toast.error('Puts erro ao cadastrar!', {
-          position: 'bottom-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    });
-  }
+  }, []);
 
   return (
     <>
       <PageDefault>
 
         <FormContainer>
-          <h1> Cadastro de Categoria</h1>
+          <h1>
+            Cadastro de Categoria:&nbsp;
+            {values.nome}
+          </h1>
 
-          <form onSubmit={function handleSubmit(submit) {
-            submit.preventDefault();
-            if (dadosCategoria.nome !== '') {
-              addCategoria(dadosCategoria);
-              setCategoria(valoresIniciais);
-            } else {
-              toast.warning('Meu, tem campo obrigatório vazio!', {
-                position: 'bottom-center',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              });
-            }
+          <form onSubmit={function handleSubmit(event) {
+            event.preventDefault();
+            categoriasRepository.create({
+              nome: values.nome,
+              descricao: values.descricao,
+              cor: values.cor,
+            }).then(() => {
+              setCategorias([
+                ...categorias,
+                values,
+              ]);
+              clearForm();
+            });
           }}
           >
 
@@ -165,19 +99,28 @@ function Categoria() {
               label="Categoria do filme/seriado"
               req="*"
               type="text"
-              value={dadosCategoria.nome}
+              value={values.nome}
               name="nome"
-              onChange={alterarCategoria}
+              onChange={handlerChange}
               required
             />
 
             <FormField
-              label="Descreva o filme/seriado"
+              label="Descreva a categoria"
               req="*"
               type="textarea"
-              value={dadosCategoria.descricao}
+              value={values.descricao}
               name="descricao"
-              onChange={alterarCategoria}
+              onChange={handlerChange}
+              required
+            />
+
+            <FormField
+              label="cor"
+              type="color"
+              value={values.cor}
+              name="cor"
+              onChange={handlerChange}
               required
             />
 
@@ -199,7 +142,6 @@ function Categoria() {
                 </li>
               ))}
             </ul>
-            <ToastContainer />
           </form>
         </FormContainer>
       </PageDefault>
@@ -207,4 +149,4 @@ function Categoria() {
   );
 }
 
-export default Categoria;
+export default CadastroCategoria;

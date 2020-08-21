@@ -56,7 +56,7 @@ const UserLogin = () => {
 
     if (token) {
       setToken(token);
-      return history.push('/Cadastro/Video');
+      return history.push('/');
     }
 
     setError(erro);

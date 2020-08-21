@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { VideoCardContainer } from './styles';
 
 function getYouTubeId(youtubeURL) {
@@ -9,24 +10,32 @@ function getYouTubeId(youtubeURL) {
     );
 }
 
-function VideoCard({ videoTitle, videoURL }) {
+function VideoCard({
+  videoTitle, videoURL, categoryColor, videoDescricao,
+}) {
   const image = `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`;
   return (
-    <>
-      <VideoCardContainer
-        url={image}
-        href={videoURL}
-        target="_blank"
-      >
-        <VideoCardContainer.Background>
-          <VideoCardContainer.Title>
-            {videoTitle}
-            {' '}
-          </VideoCardContainer.Title>
-        </VideoCardContainer.Background>
-      </VideoCardContainer>
-    </>
+    <VideoCardContainer
+      url={image}
+      href={videoURL}
+      target="_blank"
+      style={{ borderColor: categoryColor || 'red' }}
+      title={videoDescricao}
+    >
+      <h2>{videoTitle}</h2>
+    </VideoCardContainer>
   );
 }
+
+VideoCard.defaultProps = {
+  categoryColor: 'text',
+};
+
+VideoCard.propTypes = {
+  videoTitle: PropTypes.string.isRequired,
+  videoURL: PropTypes.string.isRequired,
+  categoryColor: PropTypes.string,
+  videoDescricao: PropTypes.string.isRequired,
+};
 
 export default VideoCard;

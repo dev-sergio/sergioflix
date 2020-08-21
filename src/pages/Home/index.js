@@ -1,39 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Menu from '../../components/Menu';
-import dadosIniciais from '../../data/dados_iniciais.json';
 import BannerMain from '../../components/BannerMain';
 import Carousel from '../../components/Carousel';
-import Footer from '../../components/Footer';
-import { HomeBase } from './styles';
+import PageDefault from '../../components/PageDefault';
+import categoriesRepository from '../../repositories/categorias';
 
 function Home() {
-  const carousels = [];
+  const [dadosIniciais, setDadosIniciais] = useState([]);
 
-  for (const [index] of dadosIniciais.categorias.entries()) {
-    carousels.push(<Carousel
-      key={index}
-      ignoreFirstVideo
-      category={dadosIniciais.categorias[index]}
-    />);
-  }
+  useEffect(() => {
+    categoriesRepository.getAllWithVideos()
+      .then((categoriasComVideos) => {
+        setDadosIniciais(categoriasComVideos);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
   return (
-    <HomeBase>
-
-      <div className="Home">
-
-        <Menu />
-
-        <BannerMain
-          videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-          url={dadosIniciais.categorias[0].videos[0].url}
-          videoDescription="Um dos fimes mais belos que já assisti, Durante a Segunda Guerra Mundial na Itália, o judeu Guido e seu filho Giosué são levados para um campo de concentração nazista. Afastado da mulher, ele tem que usar sua imaginação para fazer o menino acreditar que estão participando de uma grande brincadeira, com o intuito de protegê-lo do terror e da violência que os cercam."
-        />
-
-        { carousels }
-        <Footer />
+    <PageDefault paddingAll={0}>
+      <Menu />
+      {dadosIniciais.length === 0 && (
+      <div style={{ position: 'fixed' }}>
+        Loading...
       </div>
-    </HomeBase>
+      )}
+
+      {dadosIniciais.map((categoria, indice) => {
+        if (indice === 0) {
+          return (
+            <div key={categoria.id}>
+              <BannerMain
+                videoTitle={dadosIniciais[0].videos[0].titulo}
+                url={dadosIniciais[0].videos[0].url}
+                videoDescription={dadosIniciais[0].videos[0].descricao}
+              />
+              <Carousel
+                ignoreFirstVideo
+                category={dadosIniciais[0]}
+              />
+            </div>
+          );
+        }
+
+        return (
+          <Carousel
+            key={categoria.id}
+            category={categoria}
+          />
+        );
+      })}
+    </PageDefault>
   );
 }
 

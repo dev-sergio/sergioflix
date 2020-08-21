@@ -1,24 +1,72 @@
 {
-  "categorias": [
+  "videos": [{
+      "titulo": "A Vida é Bela - Trailer(LEG)",
+      "url": "https://youtu.be/8beVLRzEqD0",
+      "descricao": "Um dos fimes mais belos que já assisti, Durante a Segunda Guerra Mundial na Itália, o judeu Guido e seu filho Giosué são levados para um campo de concentração nazista. Afastado da mulher, ele tem que usar sua imaginação para fazer o menino acreditar que estão participando de uma grande brincadeira, com o intuito de protegê-lo do terror e da violência que os cercam.",
+      "categoriaId": 1,
+      "id": 1
+    },
     {
-      "id": 1,
+      "titulo": "Bastardos Inglórios - Trailer(DUB)",
+      "url": "https://youtu.be/UEcGnFH5V0E",
+      "descricao": "Bastardos Inglórios (Inglorious Bastards), de Quentin Tarantino. Elenco: Brad Pitt, Eli Roth, BJ Novak, Mike Myers, Michael Fassbender, Diane Kruger, Til Schweiger, Julie Dreyfus. Na França ocupada pelos nazistas durante a Segunda Guerra, grupo de soldados judeus americanos tem como missão espalhar o terror pelo Terceiro Reich. Eli Roth interpreta um sargento nazista jogador de beisebol e Brad Pitt ficará com o papel principal. Ele viverá o tenente Aldo Raine, homem que organiza uma equipe de bastardos. Diane Kruger viverá Bridget Von Hammersmark, uma famosa atriz alemã que se envolve em uma trama para sabotar nazistas. A alemã Nastassja Kinski estava cotada para o papel.",
+      "categoriaId": 1,
+      "id": 21
+    },
+    {
+      "titulo": "Até o ultimo homem - Trailer(LEG)",
+      "url": "https://www.youtube.com/watch?v=4s4UCxCv_OE",
+      "descricao": "Durante a Segunda Guerra Mundial, o médico do exército Desmond T. Doss (Abdrew Garfield) se recusa a pegar em uma arma e matar pessoas, porém, durante a Batalha de Okinawa ele trabalha na ala médica e salva mais de 75 homens, sendo condecorado. O que faz de Doss o primeiro Opositor Consciente da história norte-americana a receber a Medalha de Honra do Congresso.",
+      "categoriaId": 1,
+      "id": 3
+    },
+    {
+      "titulo": "300 - Trailer(LEG)",
+      "url": "https://www.youtube.com/watch?v=X6qQbPtM-iE",
+      "descricao": "300 é um relato sangrento da Batalha das Termópilas, da Antigüidade, na qual o Rei Leônidas (GERARD BUTLER) e 300 espartanos lutaram até a morte contra Xerxes (RODRIGO SANTORO) e seu numeroso exército persa. Enfrentando dificuldades insuperáveis, o sacrifício desses homens levou toda a Grécia a se unir contra o inimigo persa, traçando um marco no caminho para a democracia. Inspirada pela obra de Frank Miller, criador da graphic novel Sin City, o filme é uma aventura épica que fala de paixão, coragem, liberdade e sacrifício, incorporados pelos guerreiros espartanos que lutaram em uma das maiores batalhas da história.",
+      "categoriaId": 1,
+      "id": 4
+    },
+    {
+      "titulo": "Pearl Harbor - Trailer(DUB)",
+      "url": "https://youtu.be/TJVRc19H95I",
+      "descricao": "PEARL HARBOR relata o momento em que a inocência de uma nação é abalada por um repentino e devastador ataque de guerra. Vidas e amores de toda uma geração são tragicamente arrastados pelo maior conflito já visto pelo homem - a Segunda Guerra Mundial - os acontecimentos em Pearl Harbor tornaram-se um teste supremo para a força do espírito humano.",
+      "categoriaId": 1,
+      "id": 5
+    },
+    {
+      "titulo": "Sniper Americano - Trailer(LEG)",
+      "url": "https://youtu.be/2Io-llugtyo",
+      "descricao": "O SEAL da marinha dos EUA, Chris Kyle, é enviado ao Iraque com a única missão de proteger seus companheiros de luta. A sua precisão certeira salva um número incontável de vidas no campo de batalha e, quando as histórias da sua coragem se espalham, ele ganha o apelido de “Lenda”. Entretanto, a sua reputação também cresce por trás das linhas inimigas, a sua cabeça é posta a prêmio, e ele se torna o principal alvo dos insurgentes. Além disso, ele enfrenta um tipo diferente de batalha no âmbito doméstico: luta para ser um bom marido e pai do outro lado do mundo. Apesar do perigo e do estresse que sua família passa em casa, Chris serve quatro períodos angustiantes de serviço no Iraque e personifica o espírito da doutrina do SEAL “Não deixar ninguém para trás”. Mas ao voltar para a esposa, Taya Renae Kyle (Sienna Miller), e filhos, Chris descobre que é a guerra que ele não pode deixar para trás.",
+      "categoriaId": 1,
+      "id": 6
+    },
+    {
+      "titulo": "O Menino do Pijama Listrado - Trailer(LEG)",
+      "url": "https://www.youtube.com/watch?v=5Rz5ELTxG48",
+      "descricao": "Baseado no romance dos mais vendidos de John Boyne, é “um filme inesquecível, poderoso e emocionante que transcende as palavras” (Pete Hammond, Hollywood.com). Entediado e inquieto em sua nova casa, Bruno, um menino inocente e ingênuo de oito anos de idade ignora as orientações da sua mãe e embarca em uma aventura na floresta. Ele logo conhece um garoto e uma surpreendente amizade se desenvolve. Passada durante a Segunda Guerra Mundial, esta história inesquecível e inspiradora  sobre o poder do espírito humano vai cativar seu coração e ficar na sua mente.",
+      "categoriaId": 1,
+      "id": 7
+    },
+    {
+      "titulo": "Bad Boys - Trailer(LEG)",
+      "url": "https://www.youtube.com/watch?v=yoPu2woSvVI",
+      "descricao": "Do diretor Micheal Bay (A Rocha, Armageddon) e da equipe de produção de Don Simpson e Jerry Bruckheimer (Um Tira da Pesada, Ases Indomáveis) chega esse arrepiante e explosivo filme de ação do principio ao fim. Will Smith e Martin Lawrence se juntam como parceiros contra o crime nesta emocionante e divertida aventura sobre dois caras legais que são verdadeiros Bad Boys! Um carregamento de heroína confiscada avaliada em um milhão de dólares foi simplesmente roubado do depósito da polícia. O sumiço das drogas pode destruir as carreiras dos detetives Mike Lowrey (Will Smith) e Marcus Burnett (Martin Lawrence) e acabar com a divisão de narcóticos do Departamento de Polícia de Miami. Quando as investigações ameaçam os traficantes, eles raptam a única testemunha do caso - uma bela informante da polícia (Téa Leoni) que se torna amiga dos Bad Boys -- e as coisas se tornam pessoais! Carros velozes, uma bela garota e ação sem parar fazem de OS BAD BOYS diversão garantida!",
+      "categoriaId": 2,
+      "id": 8
+    }
+  ],
+  "categorias": [{
       "nome": "Guerra",
-      "descricao": "Filmes de guerra"
+      "cor": "#ff0000",
+      "descricao": "Filmes de guerra",
+      "id": 1
     },
     {
-      "id": 2,
       "nome": "Comédia",
-      "descricao": "Filmes de Comédia"
-    },
-    {
-      "id": 3,
-      "nome": "Romance",
-      "descricao": "Filmes de Romance"
-    },
-    {
-      "id": 4,
-      "nome": "Animação",
-      "descricao": "Filmes de Animação"
+      "descricao": "Filmes ou seriados de comédia",
+      "cor": "#ffff00",
+      "id": 2
     }
   ]
 }

@@ -65,7 +65,7 @@ const Input = styled.input`
 `;
 
 function FormField({
-  label, req, type, name, value, onChange, suggestions,
+  label, type, name, value, onChange, suggestions,
 }) {
   const fieldId = `id_${name}`;
   const isTextarea = type === 'textarea';
@@ -92,7 +92,6 @@ function FormField({
         <Label.Text>
           {label}
           :
-          {req}
         </Label.Text>
         {
           hasSuggestions && (
@@ -116,12 +115,10 @@ FormField.defaultProps = {
   type: 'text',
   value: '',
   suggestions: [],
-  req: '',
 };
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  req: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,

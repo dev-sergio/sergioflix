@@ -1,6 +1,10 @@
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 export const VideoCardContainer = styled.a`
+  margin-top: 10px;
+  border: 2px solid;
+  border-radius: 4px;
   text-decoration: none;
   overflow: hidden;
   cursor: pointer;
@@ -11,59 +15,45 @@ export const VideoCardContainer = styled.a`
   background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
   background-position: center;
+  border-radius: 10px;
   position: relative;
   display: flex;
-  align-items: center;
-  margin-top: 16px;
-  margin-bottom: 16px;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-
-  &:not(:first-child) {
-    margin-left: 20px;
-  }
-
-`;
-
-VideoCardContainer.Background = styled.div`
-  background-image: ${({ url }) => `url(${url})`};
-  flex: 0 0 298px;
-  width: 298px;
-  height: 197px;
-  position: absolute;
-  display: flex;
-  align-items: center;
+  align-items: flex-end;
   padding: 16px;
-
+  transition: opacity .3s;
+  &:after {
+    content: "";
+    display: block;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0;
+  }
   &:hover,
   &:focus {
-    background: rgba(0, 0, 0, 0.7);
-    border-bottom: 4px solid var(--white);
-  }
-
-  &:hover span {
-    opacity: 1;
-  }
-
-  @media (max-width: 800px) {
-    background: rgba(0, 0, 0, 0.7);
-
-    span {
+    
+    &:after {
+      opacity: 1;
+    }
+    h2 {
       opacity: 1;
     }
   }
-`;
-
-VideoCardContainer.Title = styled.span`
-  font-size: 16pt;
-  text-align: center;
-  opacity: 0;
-  font-weight: 700;
-
-  &:hover {
-    opacity: 1;
+  
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+  h2 {
+    position: center;
+    background: rgba(0,0,0,0.5);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity .3s;
   }
 `;

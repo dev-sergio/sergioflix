@@ -12,6 +12,9 @@ const Container = styled.ul`
     z-index: 50;
     top: 0;
     bottom: 0;
+    margin: auto;
+    width: 30px;
+    height: 30px;
     background: rgba(255, 255, 255, 0.2);
     transform: initial;
     &:before {

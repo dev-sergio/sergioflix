@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import Menu from '../../components/Menu';
 import BannerMain from '../../components/BannerMain';

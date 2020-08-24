@@ -1,5 +1,6 @@
 {
-  "videos": [{
+  "videos": [
+    {
       "titulo": "A Vida é Bela - Trailer(LEG)",
       "url": "https://youtu.be/8beVLRzEqD0",
       "descricao": "Um dos fimes mais belos que já assisti, Durante a Segunda Guerra Mundial na Itália, o judeu Guido e seu filho Giosué são levados para um campo de concentração nazista. Afastado da mulher, ele tem que usar sua imaginação para fazer o menino acreditar que estão participando de uma grande brincadeira, com o intuito de protegê-lo do terror e da violência que os cercam.",
@@ -56,7 +57,8 @@
       "id": 8
     }
   ],
-  "categorias": [{
+  "categorias": [
+    {
       "nome": "Guerra",
       "cor": "#ff0000",
       "descricao": "Filmes de guerra",

@@ -55,5 +55,9 @@ export const VideoCardContainer = styled.a`
     z-index: 2;
     opacity: 0;
     transition: opacity .3s;
+    @media(max-width: 800px){
+    opacity: 1;
+    }
   }
+  
 `;

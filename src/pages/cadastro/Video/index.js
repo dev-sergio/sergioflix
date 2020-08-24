@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useHistory, Link } from 'react-router-dom';
@@ -54,19 +56,27 @@ function CadastroVideo() {
     <PageDefault>
 
       <h1>Cadastro de Vídeos</h1>
+      <ToastContainer position={toast.POSITION.TOP_CENTER} />
 
       <form onSubmit={(event) => {
         event.preventDefault();
+        // eslint-disable-next-line max-len
         const categoriaEscolhida = categories.find((categoria) => categoria.nome === values.categoria);
-        videosRepository.create({
-          titulo: values.titulo,
-          url: values.url,
-          descricao: values.descricao,
-          categoriaId: categoriaEscolhida.id,
-        })
-          .then(() => {
-            history.push('/');
-          });
+        if (categoriaEscolhida.id > 0) {
+          videosRepository.create({
+            titulo: values.titulo,
+            url: values.url,
+            descricao: values.descricao,
+            categoriaId: categoriaEscolhida.id,
+          })
+            .then(() => {
+              history.push('/');
+            });
+        } else {
+          toast.error('Categoria não cadastrada');
+          document.getElementById('id_categoria').value = '';
+          document.getElementById('id_categoria').focus();
+        }
       }}
       >
         <FormField
